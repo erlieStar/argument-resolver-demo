@@ -17,7 +17,7 @@ public class CurrentUserUserHandlerMethodArgumentResolver implements HandlerMeth
     /** 用于判定是否需要处理该参数分解，返回true为需要，并会去调用下面的方法resolveArgument。*/
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        return parameter.getParameterType().isAssignableFrom(User.class) && parameter.hasParameterAnnotation(CurrentUser.class);
+        return parameter.getParameterType().isAssignableFrom(Integer.class) && parameter.hasParameterAnnotation(CurrentUser.class);
     }
 
     /** 真正用于处理参数分解的方法，返回的Object就是controller方法上的形参对象。*/
@@ -25,9 +25,6 @@ public class CurrentUserUserHandlerMethodArgumentResolver implements HandlerMeth
     public Object resolveArgument(MethodParameter parameter, ModelAndViewContainer container,
                                   NativeWebRequest request, WebDataBinderFactory factory) throws Exception {
 
-        String userId = request.getParameter("userId");
-
-        // 为了方便不模拟查数据库的过程，直接new一个username和password都是userId的对象
-        return new User(userId, userId);
+        return 1;
     }
 }

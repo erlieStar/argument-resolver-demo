@@ -17,10 +17,7 @@ import java.util.Map;
 public class UserController {
 
     @RequestMapping(value = "userInfo", method = RequestMethod.GET)
-    public Map<String, String> userInfo(@CurrentUser User user) {
-        Map<String, String> result = new HashMap<>();
-        result.put("username", user.getUsername());
-        result.put("password", user.getPassword());
-        return result;
+    public Integer userInfo(@CurrentUser Integer id) {
+        return id;
     }
 }
